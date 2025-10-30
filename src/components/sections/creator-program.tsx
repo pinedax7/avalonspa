@@ -30,6 +30,7 @@ const items: Item[] = [
     img: "/images/crafting.png",
     container: "/images/UIContainers/UIContainer_Red.png",
     offsetY: -60,
+    offsetX: 22,
     scale: 0.8, // antes 1.0
   },
   {
@@ -86,10 +87,10 @@ export function CreatorProgram({
 
               {/* Título (dos líneas como tu captura) */}
               <h2 className="mt-4 text-white font-pirulen tracking-[0.14em] leading-[0.95]">
-                <span className="block text-[24px] md:text-[25.6px] lg:text-[30.4px] tracking-[0.02em] leading-10">
+                <span className="block text-[24px] md:text-[30.4px] tracking-[0.02em] leading-10">
                   UNLOCK INFINITE
                 </span>
-                <span className="block text-[24px] md:text-[32px] lg:text-[38px] tracking-[0.02em] leading-[29px]">
+                <span className="block text-[24px] md:text-[38px] tracking-[0.02em] leading-[29px]">
                   POSSIBILITIES
                 </span>
               </h2>
@@ -97,7 +98,7 @@ export function CreatorProgram({
 
             <div
               className={cn(
-                "grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8",
+                "grid grid-cols-1 sm:grid-cols-3 gap-0",
                 "overflow-visible pb-2"
               )}
             >
