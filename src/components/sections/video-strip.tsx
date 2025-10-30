@@ -17,7 +17,7 @@ type Props = {
 };
 
 export function VideoStrip({
-  src = "/video/uri_ifs___V_Tr6MBzCDC7AHEo_ET6ebBzKITscmfOlTp36vPo7q_-A.mp4",
+  src = "https://res.cloudinary.com/dzfajfr7g/video/upload/v1761837846/meadows_tafrkg.mp4",
   heightClass = "h-[28vh] md:h-[34vh] lg:h-[38vh]",
   className,
   poster,
