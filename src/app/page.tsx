@@ -22,7 +22,7 @@ export default function Page() {
       
       <BuildUniverseSection />
       <VideoStrip
-        src="/video/hero.mp4"
+        src="/video/meadows.mp4"
         heightClass="h-[26vh] md:h-[32vh] lg:h-[49.7vh]"
         overlay
         overlayClass="bg-[linear-gradient(180deg,rgba(0,0,0,0.20)_0%,rgba(0,0,0,0.35)_100%)]"
