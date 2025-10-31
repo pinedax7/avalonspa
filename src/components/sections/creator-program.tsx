@@ -64,12 +64,12 @@ export function CreatorProgram({
       style={{ backgroundImage: `url('${bgSrc}')` }}
     >
       <LockedScale designWidth={1351}>
-        <div className="relative mx-auto px-5 md:px-9 pt-6 md:pt-12 pb-4">
-          <div className="grid grid-cols-1 gap-0 md:grid-cols-[375px_minmax(0,1fr)] md:items-start">
+        <div className="relative mx-auto px-5 md:px-16 pt-6 md:pt-12 pb-4">
+          <div className="grid grid-cols-1 gap-0 md:grid-cols-[387px_minmax(0,1fr)] md:items-start">
             <div className="md:mx-0 md:mb-0 mb-9 flex flex-col items-center md:items-start text-left md:text-left">
               <div
                 style={{ width: `${ctaBase}px`, height: `${ctaBase}px` }}
-                className="md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-80 self-center"
+                className="md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-80 self-center -mt-2.5"
               >
                 <Image
                   src="/images/CTAButton_JoinOurCreatorProgram.png"
@@ -81,12 +81,12 @@ export function CreatorProgram({
                 />
               </div>
 
-              <p className="mt-4 text-white/85 font-eurostile text-[16px] leading-none">
+              <p className="mt-2 text-white/85 font-eurostile text-[16px] leading-none">
                 Dream. Create. Own. Play. Evolve.
               </p>
 
               {/* Título (dos líneas como tu captura) */}
-              <h2 className="mt-4 text-white font-pirulen tracking-[0.14em] leading-[0.95]">
+              <h2 className="mt-3 text-white font-pirulen tracking-[0.14em] leading-[0.95]">
                 <span className="block text-[24px] md:text-[30.4px] tracking-[0.02em] leading-10">
                   UNLOCK INFINITE
                 </span>
@@ -136,7 +136,7 @@ function CreatorCard({
         className={cn(
           "relative rounded-xl overflow-visible",
           // ancho fijo por breakpoint, la altura sale de aspect-ratio (abajo)
-          "w-[99vw] max-w-[340px] sm:w-[308px] md:w-[320px] lg:w-[340px]"
+          "w-[99vw] max-w-[340px] sm:w-[308px] md:w-[321px] lg:w-[321px]"
         )}
         // Aplica la proporción real del PNG (fallback: cuadrado mientras carga)
         style={{ aspectRatio: ratio ? `${ratio.w} / ${ratio.h}` : "1 / 1" }}

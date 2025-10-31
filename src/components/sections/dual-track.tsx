@@ -49,12 +49,12 @@ export function DualTrackGTMSection({
           grid-cols-1
           md:grid-cols-[485px_453px]          /* tablet/desktop: anchos exactos */
           md:pl-[clamp(280px,26vw,360px)]     /* espacio para personaje (tablet) */
-          lg:pl-[386px]                       /* desktop: igual al personaje */
+          lg:pl-[356px]                       /* desktop: igual al personaje */
           2xl:pl-[420px]                      /* opcional: igual al up-scale 2K */
         "
         >
           {/* Headline */}
-          <div className="relative -ml-4 md:-ml-10 lg:-ml-16 xl:-ml- max-w-[485px]">
+          <div className="relative -ml-4 md:-ml-10 lg:-ml-12 xl:-ml- max-w-[485px]">
             <h2
               className="
               font-pirulen font-semibold text-white leading-[0.92]
@@ -70,14 +70,14 @@ export function DualTrackGTMSection({
 
           {/* Frame derecha */}
           <div className="relative justify-self-center md:justify-self-end">
-            <div className="relative w-[min(92vw,553px)] aspect-553/563 md:w-[553px] md:h-[563px] md:aspect-auto">
+            <div className="relative w-[min(92vw,529px)] aspect-529/563 md:w-[529px] md:h-[563px] md:aspect-auto">
               <Image
                 src={frameSrc}
                 alt="UI frame"
                 fill
                 priority
                 className="object-contain"
-                sizes="(max-width: 768px) 92vw, 553px"
+                sizes="(max-width: 768px) 92vw, 529px"
               />
               <div className="absolute inset-0 z-10 pl-10 py-8 md:pl-20 md:py-12 text-white">
                 <Block title="INTENSE GAMEPLAY">

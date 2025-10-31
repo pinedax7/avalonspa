@@ -1,3 +1,4 @@
+import { LockedVideoStrip } from "@/components/common/locked-video";
 import { AgentsAndInteropSection } from "@/components/sections/agents-and-interop";
 import { BuildUniverseSection } from "@/components/sections/build-universe";
 import { CommunityCreationsSection } from "@/components/sections/community-creations";
@@ -8,22 +9,25 @@ import { EconomyOwnershipSection } from "@/components/sections/economy-ownership
 import { GifStrip } from "@/components/sections/gif-strip";
 import { Hero } from "@/components/sections/hero";
 import { StayConnectedFooter } from "@/components/sections/stay-connected";
-import { VideoStrip } from "@/components/sections/video-strip";
+ 
 
 export default function Page() {
   return (
     <main>
       <Hero />
       <CreatorProgram />
-      <VideoStrip
+
+      <LockedVideoStrip
+        designWidth={1351}
+        designHeight={399.66}
         src="/video/uri_ifs___V_Tr6MBzCDC7AHEo_ET6ebBzKITscmfOlTp36vPo7q_-A.mp4"
-        heightClass="h-[36vh] md:h-[36vh] lg:h-[36vh]"
       />
-      
+
       <BuildUniverseSection />
-      <VideoStrip
+      <LockedVideoStrip
         src="https://res.cloudinary.com/dzfajfr7g/video/upload/v1761837846/meadows_tafrkg.mp4"
-        heightClass="h-[26vh] md:h-[32vh] lg:h-[49.7vh]"
+        designWidth={1351}
+        designHeight={520}
         overlay
         overlayClass="bg-[linear-gradient(180deg,rgba(0,0,0,0.20)_0%,rgba(0,0,0,0.35)_100%)]"
         vignette

@@ -11,7 +11,11 @@ const videoItems = [
     src: "/video/ruby-archipelago.mp4",
     bleed: 1.06,
   },
-  { title: "MEADOWS", src: "/video/meadows.mp4", bleed: 1.06 },
+  {
+    title: "MEADOWS",
+    src: "https://res.cloudinary.com/dzfajfr7g/video/upload/v1761837846/meadows_tafrkg.mp4",
+    bleed: 1.06,
+  },
   { title: "ENDLESS FALLS", src: "/video/endless-falls.mp4", bleed: 1.06 },
 ];
 
@@ -85,11 +89,11 @@ export function BuildUniverseSection({
       }}
     >
       <LockedScale designWidth={1351}>
-        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-6 py-12 md:py-14">
+        <div className="mx-auto w-full max-w-[1400px] py-12 md:py-14">
           {/* ─────────────── Top Row: Title + Description ─────────────── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start  px-4 md:px-24 ">
             {/* Left side */}
-            <div className="w-fit mx-auto md:mx-auto md:self-center">
+            <div className="w-fit md:self-center">
               <h2
                 className="
                 inline-block
@@ -116,14 +120,14 @@ export function BuildUniverseSection({
               </div>
 
               {/* Subtítulo */}
-              <p className="mt-3 font-eurostile font-bold text-[18.5px] text-black">
+              <p className="mt-3 font-eurostile font-bold text-[18px] text-black">
                 PLATFORMS COMING TO PC &amp; CONSOLES
               </p>
             </div>
 
             {/* Right side */}
-            <div className="text-black space-y-5 pr-0 md:pr-24">
-              <p className="font-eurostile font-bold text-[22.5px] leading-[30px]">
+            <div className="text-black space-y-5 pr-0">
+              <p className="font-eurostile font-bold text-[25px] leading-[30px]">
                 AVALON is a new kind of game, a boundless realm where players
                 and AI forge their own worlds.
               </p>
@@ -143,21 +147,21 @@ export function BuildUniverseSection({
           </div>
 
           {/* ─────────────── Video Cards Row ─────────────── */}
-          <div className="mt-4 md:mt-12 grid grid-cols-1 gap-0 md:grid-cols-3 md:gap-3">
+          <div className="mt-4 md:mt-12 grid grid-cols-1 gap-0 md:grid-cols-3 md:gap-1.5">
             {videoItems.map((v) => (
               <VideoCard key={v.title} title={v.title} src={v.src} />
             ))}
           </div>
 
           {/* ─────────────── Gallery Strip (5 imágenes) ─────────────── */}
-          <div className="mt-2 grid grid-cols-1 gap-9 sm:grid-cols-5 sm:gap-[5px] lg:grid-cols-5">
+          <div className="mt-0 grid grid-cols-1 gap-9 sm:grid-cols-5 sm:gap-[5px] lg:grid-cols-5">
             {galleryItems.map((g) => (
               <GalleryCard key={g.title} {...g} />
             ))}
           </div>
 
           {/* Nueva sección de pilares */}
-          <CorePillarsSection3Col className="mt-4" />
+          <CorePillarsSection3Col className="mt-7" />
         </div>
       </LockedScale>
     </section>
@@ -190,7 +194,7 @@ function VideoCard({ title, src }: { title: string; src: string }) {
         </video>
       </div>
 
-      <PlateLabel plateHeight={105}>{title}</PlateLabel>
+      <PlateLabel plateHeight={115}>{title}</PlateLabel>
     </div>
   );
 }
@@ -245,7 +249,7 @@ function GalleryCard({
       </div>
 
       {/* Plate centrado y ligeramente solapado */}
-      <PlateLabel className="w-full" plateHeight={90}>
+      <PlateLabel className="w-[80%]" plateHeight={85}>
         {title}
       </PlateLabel>
     </div>
@@ -260,7 +264,7 @@ function PlateLabel({
   /** Alto visible del “botón” (la franja) */
   plateHeight = 64,
   /** Alto real aproximado del PNG del frame (para posicionar la base) */
-  frameHeight = 320,
+  frameHeight = 380,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -270,7 +274,7 @@ function PlateLabel({
 }) {
   return (
     <div
-      className={cn("relative mx-auto w-[320px] select-none", className)}
+      className={cn("relative mx-auto w-[360px] select-none", className)}
       style={{ height: `${plateHeight}px`, overflow: "hidden" }}
     >
       {/* Fondo: frame completo, anclado abajo. 
@@ -290,7 +294,7 @@ function PlateLabel({
 
       {/* Texto centrado sobre la “placa” */}
       <div className="absolute inset-0 flex items-start pt-4 justify-center pointer-events-none">
-        <span className="font-pirulen font-bold tracking-[0.14em] text-white text-[13px] md:text-[14px] leading-none">
+        <span className="font-pirulen font-bold tracking-[0.01em] text-white text-[13px] md:text-[14px] leading-none">
           {children}
         </span>
       </div>
@@ -300,23 +304,34 @@ function PlateLabel({
 
 function CorePillarsSection3Col({ className }: { className?: string }) {
   return (
-    <section className={cn("w-full pt-1", className)}>
+    <section className={cn("w-full", className)}>
       <div
         className="
-          mx-auto max-w-[1400px] px-2 md:px-6
+          mx-auto px-2 md:px-12
           grid grid-cols-1 md:grid-cols-[250px_minmax(0,1fr)_250px]
-          items-center gap-10
+          items-center gap-0
         "
       >
-        {/* Izquierda: Espada (arriba en mobile) */}
-        <div className="flex items-center justify-center">
+        {/* Izquierda: Espada */}
+        <div
+          className="
+    justify-self-center self-center          
+    grid place-items-center                   
+    w-[199px] h-[197px]                      
+  "
+        >
           <Image
             src="/images/icons/GreatSword.png"
             alt="Great Sword"
-            width={202}
-            height={199}
-            className="h-40 md:h-[260px] w-auto object-contain pointer-events-none select-none opacity-50 scale-x-[-1]"
-            sizes="(min-width: 768px) 250px, 160px"
+            width={199}
+            height={197}
+            className="
+      block w-[199px] h-[197px]               
+      object-contain opacity-50 -scale-x-100
+      pointer-events-none select-none
+    "
+            sizes="199px"
+            quality={90}
           />
         </div>
 
@@ -340,14 +355,21 @@ Players earn real value from their engagement"
         </div>
 
         {/* Derecha: Arco (abajo en mobile) */}
-        <div className="flex items-center justify-center">
+        <div
+          className="
+    justify-self-center self-center
+    grid place-items-center
+    w-[229px] h-[210px]
+  "
+        >
           <Image
             src="/images/icons/BowArrow.png"
             alt="Bow and Arrow"
             width={229}
             height={210}
-            className="h-40 md:h-[260px] w-auto object-contain pointer-events-none select-none opacity-50 scale-x-[-1]"
-            sizes="(min-width: 768px) 250px, 160px"
+            className="block w-[229px] h-[210px] object-contain opacity-50 -scale-x-100 pointer-events-none select-none"
+            sizes="229px"
+            quality={90}
           />
         </div>
       </div>
@@ -361,7 +383,7 @@ function Pillar({ title, text }: { title: string; text: string }) {
       <h3 className="font-pirulen font-bold tracking-[0.01em] text-[24px] md:text-[27px] leading-[54px] md:leading-none">
         {title}
       </h3>
-      <p className="mx-auto max-w-[720px] font-eurostile text-[15px] md:text-[17px] leading-relaxed text-white/90">
+      <p className="mx-auto max-w-[720px] font-eurostile text-[15px] md:text-[17px]  leading-relaxed text-white/90">
         {text}
       </p>
     </div>
