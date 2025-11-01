@@ -4,6 +4,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { VideoStrip } from "./video-strip";
 import LockedScale from "../common/locked-scale";
+import { LockedVideoStrip } from "../common/locked-video";
 
 /* ============================================================
    Sección completa (incluye: agentes + avatar strip + callout)
@@ -59,9 +60,10 @@ export function AgentsAndInteropSection({
         className="py-8 md:py-7 bg-[#3f3f3f]" // mismo tono que la tira inferior
       />
 
-      <VideoStrip
+      <LockedVideoStrip
         src="/video/uri_ifs___V_Rjrw7dqyj1J81AmxmtnPwaQD698bfvLQnRdvxra8Tw4.mp4"
-        heightClass="h-[26vh] md:h-[53vh] lg:h-[53vh]"
+          designWidth={1351}
+        designHeight={520}
         overlay
         overlayClass="bg-[linear-gradient(180deg,rgba(0,0,0,0.20)_0%,rgba(0,0,0,0.35)_100%)]"
         vignette
@@ -155,6 +157,8 @@ function AvatarStrip({
 }
 
 /* --- callout con marco (desktop) y líneas (mobile) --- */
+ 
+
 function CraftUniqueAvatarCallout({
   text,
   className,
@@ -180,26 +184,31 @@ function CraftUniqueAvatarCallout({
         </div>
       </div>
 
-      {/* DESKTOP: marco original */}
+      {/* DESKTOP: marco original bloqueado a 1351px */}
       <div className="hidden md:block mx-auto w-full max-w-[1200px] px-6">
-        <div className="relative mx-auto w-[92%] max-w-[980px] h-[78px]">
-          {/* Marco */}
-          <Image
-            src="/images/UIContainers/UIContainer_CraftUniqueAvatar.png"
-            alt=""
-            fill
-            className="object-contain select-none pointer-events-none"
-            sizes="980px"
-            priority
-          />
-          {/* Texto */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <span className="font-pirulen font-bold text-white text-[47px] leading-none tracking-[0.01em]">
-              {text}
-            </span>
+        <LockedScale designWidth={1351}>
+          <div className="relative mx-auto w-[92%] max-w-[980px] h-[78px]">
+            {/* Marco */}
+            <Image
+              src="/images/UIContainers/UIContainer_CraftUniqueAvatar.png"
+              alt=""
+              fill
+              className="object-contain select-none pointer-events-none"
+              sizes="980px"
+              priority
+            />
+            {/* Texto */}
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <span className="font-pirulen font-bold text-white text-[47px] leading-none tracking-[0.01em]">
+                {text}
+              </span>
+            </div>
           </div>
-        </div>
+        </LockedScale>
       </div>
     </div>
   );
 }
+
+export default CraftUniqueAvatarCallout;
+

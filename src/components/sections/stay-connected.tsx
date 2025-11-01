@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import LockedScale from "../common/locked-scale"; // ⬅️ import
 
 type SocialLinks = {
   youtube?: string;
@@ -12,20 +13,13 @@ type SocialLinks = {
 
 type Props = {
   className?: string;
-  /** Texto principal (2 líneas grandes) */
   titleLine1?: string;
   titleLine2?: string;
-  /** Subtítulo debajo del título */
   subtitle?: string;
-  /** Email de contacto para “Partner” */
   partnerEmail?: string;
-  /** URL del Press Kit */
   pressKitHref?: string;
-  /** Enlaces sociales */
   socials?: SocialLinks;
-  /** Por si quieres cambiar el fondo más adelante */
   bgSrc?: string;
-  /** Logo a mostrar */
   logoSrc?: string;
 };
 
@@ -36,17 +30,13 @@ export function StayConnectedFooter({
   subtitle = "AVALON - A universe powered by AI and Players",
   partnerEmail = "sean@playavalon.com",
   pressKitHref = "#",
-  socials = {
-    youtube: "#",
-    discord: "#",
-    x: "#",
-  },
+  socials = { youtube: "#", discord: "#", x: "#" },
   bgSrc = "/images/footer-bg.png",
   logoSrc = "/images/AVALON-Avatar-01-Single-Neg-S.png",
 }: Props) {
   return (
     <section className={cn("relative w-full overflow-hidden", className)}>
-      {/* Fondo */}
+      {/* Fondo fuera del lock */}
       <Image
         src={bgSrc}
         alt=""
@@ -56,100 +46,108 @@ export function StayConnectedFooter({
         sizes="100vw"
       />
 
-      <div className="relative mx-auto w-full max-w-7xl px-6 py-10 md:py-9">
-        {/* Header: logo + título */}
-        <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[420px_1fr]">
-          {/* Logo */}
-          <div className="mx-auto md:mx-0 pl-20">
-            <div className="relative w-[140px] h-[140px] md:w-[250px] md:h-[250px]">
-              <Image
-                src={logoSrc}
-                alt="Avalon Logo"
-                fill
-                className="object-contain"
-                sizes="(max-width:768px) 140px, 250px"
-                priority
-              />
+      {/* Contenido bloqueado a 1351px y escalado proporcional */}
+      <LockedScale designWidth={1351}>
+        <div className="relative mx-auto w-full max-w-7xl px-6 py-10 md:py-9">
+          {/* Header: logo + título */}
+          <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[420px_1fr]">
+            {/* Logo */}
+            <div className="mx-auto md:mx-0 pl-20">
+              <div className="relative w-[140px] h-[140px] md:w-[250px] md:h-[250px]">
+                <Image
+                  src={logoSrc}
+                  alt="Avalon Logo"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width:768px) 140px, 250px"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Título y subtítulo */}
+            <div className="text-center md:text-left">
+              <h2 className="font-pirulen font-bold text-black leading-[0.9] text-[56px] md:text-[86px] tracking-[-0.08em]">
+                <span className="block">{titleLine1}</span>
+                <span className="block">{titleLine2}</span>
+              </h2>
+              <p className="mt-4 font-eurostile text-black/80 text-[16px] md:text-[22px] tracking-[-0.03em]">
+                {subtitle}
+              </p>
+              <p className="mt-2 font-masiva text-[10px] leading-4 tracking-[-0.01em] whitespace-pre-line">
+                (C) 2025 CREATE AVALON CORP. AVALON, and the AVALON logo are TM,
+                and (R) where applicable.
+                <br /> All other copyrights and trademarks are the property of
+                their respective owners. All other rights reserved.
+              </p>
             </div>
           </div>
 
-          {/* Título y subtítulo */}
-          <div className="text-center md:text-left">
-            <h2 className="font-pirulen font-bold text-black leading-[0.9] text-[56px] md:text-[86px] tracking-[-0.08em]">
-              <span className="block">{titleLine1}</span>
-              <span className="block">{titleLine2}</span>
-            </h2>
-            <p className="mt-4 font-eurostile text-black/80 text-[16px] md:text-[22px] tracking-[-0.03em]">
-              {subtitle}
-            </p>
-            <p className="mt-2 font-masiva text-[10px] leading-4 tracking-[-0.01em] whitespace-pre-line">
-              (C) 2025 CREATE AVALON CORP. AVALON, and the AVALON logo are TM,
-              and (R) where applicable.<br /> All other copyrights and trademarks
-              are the property of their respective owners. All other rights
-              reserved.
-            </p>
+          {/* Divider con puntitos a los extremos */}
+          <div className="relative mt-8 md:mt-10">
+            <div className="h-0.5 w-full bg-black/70" />
+            <span className="absolute -left-3 -bottom-[3px] h-[7px] w-[7px] bg-black" />
+            <span className="absolute left-0 -bottom-0.5 h-1.5 w-1.5 bg-black" />
+            <span className="absolute -right-3 -bottom-[3px] h-[7px] w-[7px] bg-black" />
+            <span className="absolute right-0 -bottom-0.5 h-1.5 w-1.5 bg-black" />
           </div>
-        </div>
 
-        {/* Divider con puntitos a los extremos */}
-        <div className="relative mt-8 md:mt-10">
-          <div className="h-0.5 w-full bg-black/70" />
-          <span className="absolute -left-3 -bottom-[3px] h-[7px] w-[7px] bg-black" />
-          <span className="absolute left-0 -bottom-0.5 h-1.5 w-1.5 bg-black" />
-          <span className="absolute -right-3 -bottom-[3px] h-[7px] w-[7px] bg-black" />
-          <span className="absolute right-0 -bottom-0.5 h-1.5 w-1.5 bg-black" />
-        </div>
-
-        {/* Bottom Row: Partner | Socials | Press Kit */}
-        <div className="mt-6 grid grid-cols-1 items-center gap-6 md:grid-cols-3">
-          {/* Partner */}
-          <div className="text-center md:text-left">
-            <div className="font-pirulen font-bold text-[22px] md:text-[29px] tracking-[-0.02em] text-black">
-              PARTNER
+          {/* Bottom Row: Partner | Socials | Press Kit */}
+          <div className="mt-6 grid grid-cols-1 items-center gap-6 md:grid-cols-3">
+            {/* Partner */}
+            <div className="text-center md:text-left">
+              <div className="font-pirulen font-bold text-[22px] md:text-[29px] tracking-[-0.02em] text-black">
+                PARTNER
+              </div>
+              <a
+                href={`mailto:${partnerEmail}`}
+                className="font-masiva text-black/80 text-[16px] md:text-[16px] underline-offset-4 hover:underline tracking-[-0.03em]"
+              >
+                {partnerEmail}
+              </a>
             </div>
-            <a
-              href={`mailto:${partnerEmail}`}
-              className="font-masiva text-black/80 text-[16px] md:text-[16px] underline-offset-4 hover:underline tracking-[-0.03em]"
-            >
-              {partnerEmail}
-            </a>
-          </div>
 
-          {/* Socials */}
-          <div className="flex items-center justify-center gap-6 md:gap-8">
-            {/* YouTube */}
-            {socials.youtube && (
-              <Link href={socials.youtube} aria-label="YouTube" target="_blank">
-                <YouTubeIcon className="h-9 w-9 md:h-11 md:w-11 text-black hover:opacity-80 transition-opacity" />
-              </Link>
-            )}
-            {/* Discord */}
-            {socials.discord && (
-              <Link href={socials.discord} aria-label="Discord" target="_blank">
-                <DiscordIcon className="h-9 w-9 md:h-11 md:w-11 text-black hover:opacity-80 transition-opacity" />
-              </Link>
-            )}
-            {/* X / Twitter */}
-            {socials.x && (
-              <Link href={socials.x} aria-label="X" target="_blank">
-                <XIcon className="h-9 w-9 md:h-11 md:w-11 text-black hover:opacity-80 transition-opacity" />
-              </Link>
-            )}
-          </div>
+            {/* Socials */}
+            <div className="flex items-center justify-center gap-6 md:gap-8">
+              {socials.youtube && (
+                <Link
+                  href={socials.youtube}
+                  aria-label="YouTube"
+                  target="_blank"
+                >
+                  <YouTubeIcon className="h-9 w-9 md:h-11 md:w-11 text-black hover:opacity-80 transition-opacity" />
+                </Link>
+              )}
+              {socials.discord && (
+                <Link
+                  href={socials.discord}
+                  aria-label="Discord"
+                  target="_blank"
+                >
+                  <DiscordIcon className="h-9 w-9 md:h-11 md:w-11 text-black hover:opacity-80 transition-opacity" />
+                </Link>
+              )}
+              {socials.x && (
+                <Link href={socials.x} aria-label="X" target="_blank">
+                  <XIcon className="h-9 w-9 md:h-11 md:w-11 text-black hover:opacity-80 transition-opacity" />
+                </Link>
+              )}
+            </div>
 
-          {/* Press Kit */}
-          <div className="text-center md:text-right">
-            <Link href={pressKitHref} className="inline-block">
-              <div className="font-pirulen font-bold text-[22px] md:text-[29px] tracking-[-0.02em] text-[#3C23C8]">
-                PRESS KIT
-              </div>
-              <div className="font-masiva text-[14px] md:text-[16px] text-[#3C23C8] tracking-[-0.03em] text-center">
-                Click Here
-              </div>
-            </Link>
+            {/* Press Kit */}
+            <div className="text-center md:text-right">
+              <Link href={pressKitHref} className="inline-block">
+                <div className="font-pirulen font-bold text-[22px] md:text-[29px] tracking-[-0.02em] text-[#3C23C8]">
+                  PRESS KIT
+                </div>
+                <div className="font-masiva text-[14px] md:text-[16px] text-[#3C23C8] tracking-[-0.03em] text-center">
+                  Click Here
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </LockedScale>
     </section>
   );
 }
