@@ -39,14 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-public/video/*.mov
-public/video/avalon-showcase.mov
-public/video/avalon-showcase.mp4
-
-# large videos
-public/video/*.mov
-public/video/*.mp4
-
+ 
 # Bloquear videos grandes
 public/video/*.mov
 public/video/avalon-showcase*.mp4
